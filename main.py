@@ -1,22 +1,27 @@
-import math
-
-
 def compute(number1, operation, number2):
-    if number1.isnumeric() and "+-*/^".__contains__(operation) and number2.isnumeric():
+    if is_number(number1) and "+-*/^".__contains__(operation) and is_number(number2):
         result = 0
         if operation == "+":
             result = float(number1) + float(number2)
-        if operation == "-":
+        elif operation == "-":
             result = float(number1) - float(number2)
-        if operation == "*":
+        elif operation == "*":
             result = float(number1) * float(number2)
-        if operation == "/":
+        elif operation == "/":
             result = float(number1) / float(number2)
-        if operation == "^":
+        elif operation == "^":
             result = pow(float(number1), float(number2))
         print(number1 + " " + operation + " " + number2 + " = " + format(result, ".2f"))
     else:
         print("Error, some character is not ok")
+
+
+def is_number(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
 
 
 if __name__ == '__main__':
